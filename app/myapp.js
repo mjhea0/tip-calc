@@ -1,8 +1,7 @@
 angular.module('tip-calc', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl : './index.html',
-            controller : 'myCtrl'
+            templateUrl : '/index.html',
         })
         .when('/meal', {
             templateUrl : './meal.html',
@@ -11,9 +10,11 @@ angular.module('tip-calc', ['ngRoute'])
         .when('/earnings', {
             templateUrl : './earnings.html',
             controller : 'earningsCtrl',
-        });
+        })
+        .otherwise({ redirectTo : '/index.html' });
     })
-    .controller('myCtrl', function($scope) {
+
+    .controller('mealCtrl', function($scope) {
         function init() {
             $scope.meal = {};
             $scope.earnings = {};
@@ -31,10 +32,11 @@ angular.module('tip-calc', ['ngRoute'])
 
         $scope.submit = function() {
             if ($scope.mealForm.$valid) {
-               compute();
-               $scope.meal.tip_percent = "";
-               $scope.meal.meal_price = "";
-               $scope.meal.tax_rate = "";
+                console.log('submitting');
+                compute();
+                $scope.meal.tip_percent = "";
+                $scope.meal.meal_price = "";
+                $scope.meal.tax_rate = "";
             }
         };
 
@@ -43,6 +45,7 @@ angular.module('tip-calc', ['ngRoute'])
         };
 
         $scope.clear = function() {
+            console.log('clear');
             init();
         };
 
@@ -59,8 +62,6 @@ angular.module('tip-calc', ['ngRoute'])
             $scope.earnings.meal_count++;
             $scope.earnings.average = $scope.earnings.tips / $scope.earnings.meal_count;
         }
-    })
-    .controller('mealCtrl', function($scope) {
 
     })
     .controller('earningsCtrl', function($scope) {
