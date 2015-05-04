@@ -1,0 +1,26 @@
+<div id="meal">
+    <div class="title"><h4>Enter the meal details:</h4></div>
+    <form name="mealForm" ng-submit="submit()" novalidate>
+    <div class="values">
+        Base Meal Price: $ <input type="number" class="form-control" ng-model="meal.meal_price" placeholder="0.00" required /><br>
+        Tax Rate: % <input type="number" class="form-control" ng-model="meal.tax_rate" required /><br>
+        Tip Percentage: % <input type="number" class="form-control" ng-model="meal.tip_percent" required /><br>
+    </div>
+    <div>
+        <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="reset" ng-click="reset()">Cancel</button>
+    </div>
+    </form><br><br>
+    <button type="submit" name="clear" ng-click="clear()">Clear All</button>
+</div>
+
+<div id="results">
+    <div class="box">
+        <div class="title"><h4>Customer Charges</h4></div>
+        <div class="values">
+            Subtotal: {{ meal.meal_total | currency }}<br>
+            Tip:    {{ meal.tip | currency }}<br>
+            Total: {{ meal.total | currency }}<br>
+        </div>
+    </div>
+</div>
