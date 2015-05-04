@@ -12,16 +12,6 @@ angular.module('tip-calc', ['ngRoute'])
         .when('/newmeal', {
             templateUrl : './meal.html',
             controller : 'myCtrl',
-            // resolve : {
-            //     city: function(owmCities, $route, $location) {
-            //         var city = $route.current.params.city;
-            //         if(owmCities.indexOf(city) == -1 ) {
-            //             $location.path('/error');
-            //             return;
-            //         }
-            //         return city;
-            //     }
-            // }
         })
         .when('/earnings', {
             templateUrl : './earnings.html',
